@@ -1,0 +1,53 @@
+
+/* 
+tbody{
+    background-color: grey;
+    border: 5px;
+    border-color: black;
+} */
+
+.cell {
+    /* background-color: red; */
+    border: solid;
+    border-width: 2px;
+    border-color: black;
+    width: 50px;
+    height: 50px;
+    /* padding: 0px; */
+    
+}
+
+#clicked {
+    background-color: black;
+}
+
+.row {
+    display: flex;
+    overflow-x: visible;
+}
+
+.square{
+    width: 30px;
+    height: 30px;
+    border: solid;
+}
+
+#azul{
+    background-color: blue;
+}
+
+#vermelho{
+    background-color:red
+}
+
+#amarelo{
+    background-color:yellow
+}
+
+#verde{
+    background-color:green
+}
+
+#laranja{
+    background-color:orange
+}
