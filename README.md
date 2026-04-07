@@ -1,7 +1,7 @@
 PaintGrid
 Uma ferramenta interativa para criar e colorir matrizes NxN no navegador.
 ## 🔗 Acesse o Projeto
-**GitHub Pages:** https://rodrigojrr.github.io/paintgrid/
+**GitHub Pages:** https://rodrigojrr.github.io/PaintGrid/
 ## 🎨 Funcionalidades
 - **Criação Dinâmica:** Gere matrizes de qualquer tamanho (NxN)
 - **Sistema de Cores:** Escolha entre 5 cores para pintar as células
