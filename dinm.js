@@ -71,7 +71,6 @@ opcoes.map((opcao) => {
 saveButton.addEventListener('click', () => saveArray())
 function saveArray() {
     localStorage.setItem("Previous-Array", tbody.innerHTML)
-    console.log(tbody)
 }
 
 // carrega a matriz do local storage
@@ -84,16 +83,22 @@ function loadArray() {
 }
 
 
-function defaultArray(){
-    numberArray = valueArray.value = 3
-    let HTML = ""
-    for (let i = 0; i < numberArray; i++) {
-        HTML += "<div class='row'>"
-        for (let j = 0; j < numberArray; j++) {
-            HTML += `<div class="cell"></div>`
-        }
-        HTML += "</div>"
+function defaultArray() {
+    if (localStorage.getItem("Previous-Array") !== null) {
+        loadArray()
+        return
     }
-    criarMatriz.click()
+    else {
+        numberArray = valueArray.value = 3
+        let HTML = ""
+        for (let i = 0; i < numberArray; i++) {
+            HTML += "<div class='row'>"
+            for (let j = 0; j < numberArray; j++) {
+                HTML += `<div class="cell"></div>`
+            }
+            HTML += "</div>"
+        }
+        criarMatriz.click()
+    }
 }
 window.onload = defaultArray
