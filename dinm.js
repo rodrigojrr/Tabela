@@ -1,7 +1,7 @@
 const BOTAO_LIMPAR = document.getElementsByClassName('clean');
 const BOTAO_CRIAR = document.getElementById('create-array')
 const TAMANHO_ARRAY = document.getElementById('numbers')
-const TBODY = document.getElementsByClassName("TBODY")[0];
+const tbody = document.getElementsByClassName("tbody")[0];
 const BOTAO_SALVAR = document.getElementById('save');
 const BOTAO_CARREGAR = document.getElementById('load');
 let OPCOES = [...document.getElementsByClassName('square')]
@@ -19,7 +19,7 @@ BOTAO_CRIAR.addEventListener('click', () => {
         }
         HTML += "</div>"
     }
-    TBODY.innerHTML = HTML
+    tbody.innerHTML = HTML
     updateCells()
 })
 
@@ -67,14 +67,14 @@ OPCOES.map((opcao) => {
 // Salva matriz no local storage
 BOTAO_SALVAR.addEventListener('click', () => saveArray())
 function saveArray() {
-    localStorage.setItem("Previous-Array", TBODY.innerHTML)
+    localStorage.setItem("Previous-Array", tbody.innerHTML)
 }
 
 // carrega a matriz do local storage
 BOTAO_CARREGAR.addEventListener('click', () => loadArray())
 function loadArray() {
     const savedItem = localStorage.getItem("Previous-Array")
-    TBODY.innerHTML = savedItem
+    tbody.innerHTML = savedItem
     updateCells(CELULAS)
     console.log(CELULAS)
 }
