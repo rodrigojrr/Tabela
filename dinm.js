@@ -1,18 +1,16 @@
-const botao = document.getElementsByClassName('clean');
-const criarMatriz = document.getElementById('create-array')
-const valueArray = document.getElementById('numbers')
-const tbody = document.getElementsByClassName("tbody")[0];
-const saveButton = document.getElementById('save');
-const loadButton = document.getElementById('load');
-let opcoes = [...document.getElementsByClassName('square')]
-let cells = [...document.getElementsByClassName('cell')];
-
-//Variavel global
-let COR = ""
+const BOTAO_LIMPAR = document.getElementsByClassName('clean');
+const BOTAO_CRIAR = document.getElementById('create-array')
+const TAMANHO_ARRAY = document.getElementById('numbers')
+const TBODY = document.getElementsByClassName("TBODY")[0];
+const BOTAO_SALVAR = document.getElementById('save');
+const BOTAO_CARREGAR = document.getElementById('load');
+let OPCOES = [...document.getElementsByClassName('square')]
+let CELULAS = [...document.getElementsByClassName('cell')];
+let COR = "azul"
 
 // Cria matriz dinamica
-criarMatriz.addEventListener('click', () => {
-    const numberArray = parseInt(valueArray.value)
+BOTAO_CRIAR.addEventListener('click', () => {
+    const numberArray = parseInt(TAMANHO_ARRAY.value)
     let HTML = ""
     for (let i = 0; i < numberArray; i++) {
         HTML += "<div class='row'>"
@@ -21,15 +19,15 @@ criarMatriz.addEventListener('click', () => {
         }
         HTML += "</div>"
     }
-    tbody.innerHTML = HTML
+    TBODY.innerHTML = HTML
     updateCells()
 })
 
 
 
 // Limpa toda a matriz
-botao[0].addEventListener('click', () => {
-    cells.map((element) => {
+BOTAO_LIMPAR[0].addEventListener('click', () => {
+    CELULAS.map((element) => {
         console.log(element)
         element.setAttribute("id", "")
     })
@@ -37,8 +35,8 @@ botao[0].addEventListener('click', () => {
 
 // Funcao que atualiza a matriz adicionando os eventListeners
 function updateCells() {
-    cells = [...document.getElementsByClassName('cell')];
-    cells.map((element) => {
+    CELULAS = [...document.getElementsByClassName('cell')];
+    CELULAS.map((element) => {
         element.addEventListener('click', () => paint(element))
     })
 }
@@ -48,9 +46,8 @@ function updateCells() {
 
 //Pinta a matriz
 function paint(element, selectedColor) {
-    console.log(COR !== element.id)
-    if (COR === element.id) {
-        COR ? element.setAttribute("id", COR) : element.setAttribute("id", "azul");
+    if (COR !== element.id) {
+        COR ? element.setAttribute("id", COR) : element.setAttribute("id", "");
     } else {
         element.setAttribute("id", "")
     }
@@ -59,7 +56,7 @@ function paint(element, selectedColor) {
 
 
 //Seleciona a COR a ser utilizada para pintar a matriz
-opcoes.map((opcao) => {
+OPCOES.map((opcao) => {
     opcao.addEventListener('click', () => {
         const selectedColor = (opcao.id)
         COR = selectedColor
@@ -68,18 +65,18 @@ opcoes.map((opcao) => {
 
 
 // Salva matriz no local storage
-saveButton.addEventListener('click', () => saveArray())
+BOTAO_SALVAR.addEventListener('click', () => saveArray())
 function saveArray() {
-    localStorage.setItem("Previous-Array", tbody.innerHTML)
+    localStorage.setItem("Previous-Array", TBODY.innerHTML)
 }
 
 // carrega a matriz do local storage
-loadButton.addEventListener('click', () => loadArray())
+BOTAO_CARREGAR.addEventListener('click', () => loadArray())
 function loadArray() {
     const savedItem = localStorage.getItem("Previous-Array")
-    tbody.innerHTML = savedItem
-    updateCells(cells)
-    console.log(cells)
+    TBODY.innerHTML = savedItem
+    updateCells(CELULAS)
+    console.log(CELULAS)
 }
 
 
@@ -89,7 +86,7 @@ function defaultArray() {
         return
     }
     else {
-        numberArray = valueArray.value = 3
+        numberArray = TAMANHO_ARRAY.value = 3
         let HTML = ""
         for (let i = 0; i < numberArray; i++) {
             HTML += "<div class='row'>"
@@ -98,7 +95,7 @@ function defaultArray() {
             }
             HTML += "</div>"
         }
-        criarMatriz.click()
+        BOTAO_CRIAR.click()
     }
 }
 window.onload = defaultArray
